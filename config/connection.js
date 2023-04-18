@@ -1,10 +1,10 @@
-const { connect } = require('mongoose');
+const mongoose = require('mongoose');
 
-module.exports = async () => {
-  await connect('mongodb://localhost/networking', {
+const connection = mongoose.connect(process.env.MONGO_URI||'mongodb://localhost:27017/networking', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 
-  return connection;
-};
+
+
+module.exports =  connection
